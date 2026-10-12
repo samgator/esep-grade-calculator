@@ -78,4 +78,3 @@ go tool cover -html=coverage.txt
 ## Notes
 
 - **Empty Categories**: At least one grade must currently be provided for each category to prevent division by zero in `computeAverage`.
-- **Known Implementation Issues**: `computeAverage` currently sums slice indices instead of values, and `calculateNumericalGrade` references exams for essays.
