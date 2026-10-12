@@ -93,3 +93,35 @@ func TestGradeTypeString(t *testing.T) {
 		t.Errorf("Expected Essay.String() to return 'essay'; got '%s' instead", Essay.String())
 	}
 }
+
+func TestPassFailPass(t *testing.T) {
+	expected_value := "Pass"
+
+	gradeCalculator := NewGradeCalculator(PassFail)
+
+	gradeCalculator.AddGrade("open source assignment", 80, Assignment)
+	gradeCalculator.AddGrade("exam 1", 80, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 80, Essay)
+
+	actual_value := gradeCalculator.GetFinalGrade()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
+
+func TestPassFailFail(t *testing.T) {
+	expected_value := "Fail"
+
+	gradeCalculator := NewGradeCalculator(PassFail)
+
+	gradeCalculator.AddGrade("open source assignment", 65, Assignment)
+	gradeCalculator.AddGrade("exam 1", 65, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 65, Essay)
+
+	actual_value := gradeCalculator.GetFinalGrade()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
